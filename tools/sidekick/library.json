@@ -6,27 +6,12 @@
         "path": "/docs/library/blocks/hero"
       },
       {
-        "name": "Hero (Video)",
-        "path": "/docs/library/blocks/hero",
-        "variant": "video"
-      },
-      {
         "name": "Columns",
         "path": "/docs/library/blocks/columns"
       },
       {
-        "name": "Columns (Press)",
-        "path": "/docs/library/blocks/columns",
-        "variant": "press"
-      },
-      {
         "name": "Cards",
         "path": "/docs/library/blocks/cards"
-      },
-      {
-        "name": "Cards (Missions)",
-        "path": "/docs/library/blocks/cards",
-        "variant": "missions"
       },
       {
         "name": "Carousel",
