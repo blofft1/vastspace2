@@ -421,3 +421,62 @@ main .section.black h6 {
 main .section.black p {
   color: var(--text-color-inverted);
 }
+
+/* Dark section with cards — split header layout */
+main .section.dark.cards-container > .default-content-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-bottom: 48px;
+}
+
+main .section.dark.cards-container > .default-content-wrapper h3 {
+  font-size: var(--heading-font-size-l);
+  line-height: 1.1;
+  margin: 0;
+}
+
+main .section.dark.cards-container > .default-content-wrapper p {
+  max-width: 480px;
+  opacity: 0.8;
+  font-size: var(--body-font-size-m);
+  line-height: 1.5;
+}
+
+main .section.dark.cards-container > .default-content-wrapper a.button:any-link {
+  background: transparent;
+  border: none;
+  color: var(--white);
+  padding: 0;
+  font-size: var(--body-font-size-m);
+  font-weight: 400;
+}
+
+main .section.dark.cards-container > .default-content-wrapper a.button::after {
+  content: ' ›';
+}
+
+main .section.dark.cards-container > .default-content-wrapper a.button:hover {
+  background: transparent;
+  opacity: 0.7;
+}
+
+@media (width >= 900px) {
+  main .section.dark.cards-container > .default-content-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px 64px;
+    margin-bottom: 64px;
+  }
+
+  main .section.dark.cards-container > .default-content-wrapper h3 {
+    font-size: var(--heading-font-size-xl);
+    grid-column: 1;
+    grid-row: 1 / -1;
+    align-self: start;
+  }
+
+  main .section.dark.cards-container > .default-content-wrapper p {
+    grid-column: 2;
+  }
+}

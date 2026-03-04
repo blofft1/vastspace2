@@ -48,6 +48,43 @@
   margin-bottom: 4px;
 }
 
+/* Missions variant – image cards with title overlay */
+.cards.missions > ul > li {
+  position: relative;
+  border-radius: 4px;
+}
+
+.cards.missions .cards-card-image {
+  position: relative;
+}
+
+.cards.missions > ul > li img {
+  aspect-ratio: 3 / 4;
+  border-radius: 4px;
+}
+
+.cards.missions .cards-card-body {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 24px;
+  background: linear-gradient(to top, rgb(0 0 0 / 60%) 0%, rgb(0 0 0 / 0%) 100%);
+  border-radius: 0 0 4px 4px;
+}
+
+.cards.missions .cards-card-body p {
+  color: var(--white, #fff);
+}
+
+.cards.missions .cards-card-body p strong {
+  font-family: var(--heading-font-family);
+  font-size: var(--heading-font-size-xs);
+  font-weight: 500;
+  letter-spacing: normal;
+  color: var(--white, #fff);
+}
+
 @media (width >= 600px) {
   .cards > ul {
     grid-template-columns: repeat(2, 1fr);
@@ -58,5 +95,9 @@
   .cards > ul {
     grid-template-columns: repeat(3, 1fr);
     gap: 32px;
+  }
+
+  .cards.missions > ul > li img {
+    aspect-ratio: 2 / 3;
   }
 }
