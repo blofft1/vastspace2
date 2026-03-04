@@ -1,0 +1,37 @@
+{
+  "blocks": {
+    "data": [
+      {
+        "name": "Hero",
+        "path": "/content/block-library/hero"
+      },
+      {
+        "name": "Hero (Video)",
+        "path": "/content/block-library/hero",
+        "variant": "video"
+      },
+      {
+        "name": "Columns",
+        "path": "/content/block-library/columns"
+      },
+      {
+        "name": "Columns (Press)",
+        "path": "/content/block-library/columns",
+        "variant": "press"
+      },
+      {
+        "name": "Cards",
+        "path": "/content/block-library/cards"
+      },
+      {
+        "name": "Cards (Missions)",
+        "path": "/content/block-library/cards",
+        "variant": "missions"
+      },
+      {
+        "name": "Carousel",
+        "path": "/content/block-library/carousel"
+      }
+    ]
+  }
+}
