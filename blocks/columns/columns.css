@@ -1,6 +1,11 @@
+/* stylelint-disable no-descending-specificity */
+
+/* Columns block – Vast station spec layout */
+
 .columns > div {
   display: flex;
   flex-direction: column;
+  gap: 16px;
 }
 
 .columns img {
@@ -19,15 +24,113 @@
   display: block;
 }
 
+/* First row: label + image + description */
+.columns > div:first-child > div:first-child p {
+  font-family: var(--mono-font-family);
+  font-size: var(--body-font-size-xs);
+  font-weight: 400;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  margin: 0 0 8px;
+}
+
+.columns > div:first-child > div:last-child p {
+  font-family: var(--heading-font-family);
+  font-size: var(--heading-font-size-m);
+  font-weight: 500;
+  line-height: 1.2;
+  margin: 0 0 12px;
+}
+
+.columns > div:first-child > div:last-child .button-wrapper {
+  margin: 8px 0 0;
+}
+
+.columns > div:first-child > div:last-child a.button:any-link {
+  font-size: var(--body-font-size-s);
+  padding: 6px 16px;
+}
+
+/* Station spec rows (rows 2+): data grid layout */
+.columns > div:not(:first-child) {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 0;
+  border-top: 1px solid rgb(0 0 0 / 8%);
+}
+
+.columns > div:not(:first-child) > div {
+  padding: 12px 16px;
+  border-bottom: 1px solid rgb(0 0 0 / 8%);
+  font-family: var(--mono-font-family);
+  font-size: var(--body-font-size-xs);
+  letter-spacing: 0.02em;
+  order: unset;
+}
+
+.columns > div:not(:first-child) > div p {
+  margin: 0;
+  font-family: var(--mono-font-family);
+  font-size: var(--body-font-size-xs);
+  font-weight: 400;
+  letter-spacing: 0.02em;
+}
+
 @media (width >= 900px) {
-  .columns > div {
+  .columns > div:first-child {
     align-items: center;
-    flex-direction: unset;
-    gap: 24px;
+    flex-direction: row;
+    gap: 32px;
   }
 
-  .columns > div > div {
+  .columns > div:first-child > div {
     flex: 1;
     order: unset;
+  }
+
+  .columns > div:not(:first-child) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* Press variant – quote cards */
+.columns.press > div {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 24px;
+  border-top: none;
+}
+
+.columns.press > div > div {
+  padding: 24px;
+  border: none;
+  border-bottom: none;
+  font-family: var(--body-font-family);
+  font-size: var(--body-font-size-s);
+  order: unset;
+}
+
+.columns.press img {
+  width: auto;
+  max-width: 160px;
+  height: 24px;
+  object-fit: contain;
+  opacity: 0.6;
+}
+
+.columns.press > div > div p {
+  font-family: var(--body-font-family);
+  font-size: var(--body-font-size-m);
+  font-weight: 500;
+  line-height: 1.33;
+  letter-spacing: 0.03em;
+  margin: 12px 0 0;
+  color: var(--text-color);
+}
+
+@media (width >= 900px) {
+  .columns.press > div {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 32px;
   }
 }

@@ -1,72 +1,60 @@
 /*
- * Copyright 2020 Adobe. All rights reserved.
- * This file is licensed to you under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License. You may obtain a copy
- * of the License at http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software distributed under
- * the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR REPRESENTATIONS
- * OF ANY KIND, either express or implied. See the License for the specific language
- * governing permissions and limitations under the License.
+ * Vast Space – Global Design System
+ * Migrated from https://www.vastspace.com/
  */
 
 :root {
   /* colors */
-  --background-color: white;
-  --light-color: #f8f8f8;
-  --dark-color: #505050;
-  --text-color: #131313;
-  --link-color: #3b63fb;
-  --link-hover-color: #1d3ecf;
+  --background-color: #fff;
+  --light-color: #ece8e3;
+  --dark-color: #2a2c2f;
+  --text-color: #2a2c2f;
+  --text-color-secondary: #897f75;
+  --text-color-inverted: #ece8e3;
+  --link-color: #ff5623;
+  --link-hover-color: #e04a1c;
+  --accent-color: #ff5623;
+  --cream-color: #fdfcf4;
+  --black: #000;
+  --white: #fff;
 
   /* fonts */
-  --body-font-family: roboto, roboto-fallback, sans-serif;
-  --heading-font-family: roboto-condensed, roboto-condensed-fallback, sans-serif;
+  --body-font-family: 'owners text', 'owners-text-fallback', sans-serif;
+  --heading-font-family: owners, owners-fallback, sans-serif;
+  --mono-font-family: phonic, 'Courier New', monospace;
 
   /* body sizes */
-  --body-font-size-m: 22px;
-  --body-font-size-s: 19px;
-  --body-font-size-xs: 17px;
+  --body-font-size-m: 18px;
+  --body-font-size-s: 14px;
+  --body-font-size-xs: 12px;
 
-  /* heading sizes */
-  --heading-font-size-xxl: 55px;
-  --heading-font-size-xl: 44px;
-  --heading-font-size-l: 34px;
-  --heading-font-size-m: 27px;
-  --heading-font-size-s: 24px;
-  --heading-font-size-xs: 22px;
+  /* heading sizes – mobile first */
+  --heading-font-size-xxl: 40px;
+  --heading-font-size-xl: 32px;
+  --heading-font-size-l: 28px;
+  --heading-font-size-m: 20px;
+  --heading-font-size-s: 16px;
+  --heading-font-size-xs: 14px;
+
+  /* spacing */
+  --section-spacing: 80px;
+  --content-max-width: 1200px;
+  --gutter: 16px;
 
   /* nav height */
   --nav-height: 64px;
 }
 
-/* fallback fonts */
-@font-face {
-  font-family: roboto-condensed-fallback;
-  size-adjust: 88.82%;
-  src: local('Arial');
-}
-
-@font-face {
-  font-family: roboto-fallback;
-  size-adjust: 99.529%;
-  src: local('Arial');
-}
-
 @media (width >= 900px) {
   :root {
-    /* body sizes */
-    --body-font-size-m: 18px;
-    --body-font-size-s: 16px;
-    --body-font-size-xs: 14px;
-
-    /* heading sizes */
-    --heading-font-size-xxl: 45px;
-    --heading-font-size-xl: 36px;
-    --heading-font-size-l: 28px;
-    --heading-font-size-m: 22px;
-    --heading-font-size-s: 20px;
-    --heading-font-size-xs: 18px;
+    /* heading sizes – desktop */
+    --heading-font-size-xxl: 60px;
+    --heading-font-size-xl: 38px;
+    --heading-font-size-l: 38px;
+    --heading-font-size-m: 24px;
+    --heading-font-size-s: 16px;
+    --heading-font-size-xs: 14px;
+    --gutter: 32px;
   }
 }
 
@@ -76,8 +64,9 @@ body {
   background-color: var(--background-color);
   color: var(--text-color);
   font-family: var(--body-font-family);
-  font-size: var(--body-font-size-m);
-  line-height: 1.6;
+  font-size: var(--body-font-size-s);
+  font-weight: 400;
+  line-height: 1.5;
 }
 
 body.appear {
@@ -98,6 +87,7 @@ footer .footer[data-block-status="loaded"] {
   visibility: visible;
 }
 
+/* headings */
 h1,
 h2,
 h3,
@@ -107,17 +97,35 @@ h6 {
   margin-top: 0.8em;
   margin-bottom: 0.25em;
   font-family: var(--heading-font-family);
-  font-weight: 600;
-  line-height: 1.25;
+  font-weight: 500;
+  line-height: 1;
+  letter-spacing: 0.01em;
   scroll-margin: 40px;
 }
 
-h1 { font-size: var(--heading-font-size-xxl); }
-h2 { font-size: var(--heading-font-size-xl); }
+h1 {
+  font-size: var(--heading-font-size-xxl);
+  line-height: 0.86;
+  letter-spacing: normal;
+}
+
+h2 {
+  font-size: var(--heading-font-size-xl);
+  color: var(--text-color-secondary);
+}
+
 h3 { font-size: var(--heading-font-size-l); }
 h4 { font-size: var(--heading-font-size-m); }
-h5 { font-size: var(--heading-font-size-s); }
-h6 { font-size: var(--heading-font-size-xs); }
+
+h5 {
+  font-size: var(--heading-font-size-s);
+  letter-spacing: 0.03em;
+}
+
+h6 {
+  font-size: var(--heading-font-size-xs);
+  letter-spacing: 0.03em;
+}
 
 p,
 dl,
@@ -129,8 +137,16 @@ blockquote {
   margin-bottom: 0.25em;
 }
 
+p {
+  font-size: var(--body-font-size-m);
+  font-weight: 500;
+  line-height: 1.33;
+  letter-spacing: 0.03em;
+}
+
 code,
 pre {
+  font-family: var(--mono-font-family);
   font-size: var(--body-font-size-s);
 }
 
@@ -140,6 +156,10 @@ pre {
   background-color: var(--light-color);
   overflow-x: auto;
   white-space: pre;
+}
+
+strong {
+  font-weight: 500;
 }
 
 main > div {
@@ -178,17 +198,19 @@ button.button {
   justify-content: center;
   max-width: 100%;
   margin: 0;
-  border: 2px solid transparent;
-  border-radius: 2.4em;
-  padding: 0.5em 1.2em;
-  font: inherit;
-  font-weight: 500;
+  border: 2px solid var(--dark-color);
+  border-radius: 2px;
+  padding: 8px 24px;
+  font-family: var(--body-font-family);
+  font-size: var(--body-font-size-s);
+  font-weight: 400;
   line-height: 1.25;
   text-decoration: none;
   cursor: pointer;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+  transition: background-color 0.2s, border-color 0.2s, color 0.2s;
 }
 
 a.button[aria-disabled="true"],
@@ -197,20 +219,21 @@ button.button:disabled {
   pointer-events: none;
 }
 
+/* primary button – dark fill */
 a.button.primary,
 button.button.primary {
-  border-color: var(--text-color);
-  background-color: var(--text-color);
-  color: var(--background-color);
+  border-color: var(--dark-color);
+  background-color: var(--dark-color);
+  color: var(--text-color-inverted);
 }
 
 a.button.primary:hover,
 a.button.primary:focus-visible,
 button.button.primary:hover,
 button.button.primary:focus-visible {
-  border-color: var(--dark-color);
-  background-color: var(--dark-color);
-  color: var(--light-color);
+  background-color: var(--black);
+  border-color: var(--black);
+  color: var(--white);
 }
 
 a.button.primary[aria-disabled="true"],
@@ -221,12 +244,13 @@ button.button.primary:disabled:hover,
 button.button.primary:disabled:focus-visible {
   background-color: var(--light-color);
   border-color: var(--light-color);
-  color: var(--dark-color);
+  color: var(--text-color-secondary);
 }
 
+/* secondary button – outline */
 a.button.secondary,
 button.button.secondary {
-  border-color: var(--text-color);
+  border-color: var(--dark-color);
   background-color: transparent;
   color: var(--text-color);
 }
@@ -235,7 +259,6 @@ a.button.secondary:hover,
 a.button.secondary:focus-visible,
 button.button.secondary:hover,
 button.button.secondary:focus-visible {
-  border-color: var(--dark-color);
   background-color: var(--light-color);
   color: var(--dark-color);
 }
@@ -248,15 +271,15 @@ button.button.secondary:disabled:hover,
 button.button.secondary:disabled:focus-visible {
   background-color: var(--light-color);
   border-color: var(--light-color);
-  color: var(--dark-color);
+  color: var(--text-color-secondary);
 }
 
-/* high-impact call-to-action */
+/* accent button – orange */
 a.button.accent,
 button.button.accent {
-  border-color: var(--link-color);
-  background-color: var(--link-color);
-  color: var(--background-color);
+  border-color: var(--accent-color);
+  background-color: var(--accent-color);
+  color: var(--white);
 }
 
 a.button.accent:hover,
@@ -275,7 +298,7 @@ button.button.accent:disabled:hover,
 button.button.accent:disabled:focus-visible {
   background-color: var(--light-color);
   border-color: var(--light-color);
-  color: var(--dark-color);
+  color: var(--text-color-secondary);
 }
 
 main img {
@@ -297,13 +320,13 @@ main img {
 
 /* sections */
 main > .section {
-  margin: 40px 0;
+  margin: var(--section-spacing) 0;
 }
 
 main > .section > div {
-  max-width: 1200px;
+  max-width: var(--content-max-width);
   margin: auto;
-  padding: 0 24px;
+  padding: 0 var(--gutter);
 }
 
 main > .section:first-of-type {
@@ -312,14 +335,89 @@ main > .section:first-of-type {
 
 @media (width >= 900px) {
   main > .section > div {
-    padding: 0 32px;
+    padding: 0 var(--gutter);
   }
 }
 
-/* section metadata */
+/* section metadata — dark variant */
+main .section.dark {
+  background-color: var(--dark-color);
+  color: var(--text-color-inverted);
+  margin: 0;
+  padding: var(--section-spacing) 0;
+}
+
+main .section.dark h1,
+main .section.dark h2,
+main .section.dark h3,
+main .section.dark h4,
+main .section.dark h5,
+main .section.dark h6 {
+  color: var(--white);
+}
+
+main .section.dark p {
+  color: var(--text-color-inverted);
+}
+
+main .section.dark a:any-link {
+  color: var(--accent-color);
+}
+
+main .section.dark a.button.primary {
+  border-color: var(--text-color-inverted);
+  background-color: var(--text-color-inverted);
+  color: var(--dark-color);
+}
+
+main .section.dark a.button.primary:hover,
+main .section.dark a.button.primary:focus-visible {
+  background-color: var(--white);
+  border-color: var(--white);
+}
+
+main .section.dark a.button.secondary {
+  border-color: var(--text-color-inverted);
+  color: var(--text-color-inverted);
+}
+
+main .section.dark a.button.secondary:hover,
+main .section.dark a.button.secondary:focus-visible {
+  background-color: rgb(255 255 255 / 10%);
+}
+
+/* section metadata — light/highlight variant (warm gray) */
 main .section.light,
 main .section.highlight {
   background-color: var(--light-color);
   margin: 0;
-  padding: 40px 0;
+  padding: var(--section-spacing) 0;
+}
+
+/* section metadata — cream variant */
+main .section.cream {
+  background-color: var(--cream-color);
+  margin: 0;
+  padding: var(--section-spacing) 0;
+}
+
+/* section metadata — black variant (pure black) */
+main .section.black {
+  background-color: var(--black);
+  color: var(--text-color-inverted);
+  margin: 0;
+  padding: var(--section-spacing) 0;
+}
+
+main .section.black h1,
+main .section.black h2,
+main .section.black h3,
+main .section.black h4,
+main .section.black h5,
+main .section.black h6 {
+  color: var(--white);
+}
+
+main .section.black p {
+  color: var(--text-color-inverted);
 }
