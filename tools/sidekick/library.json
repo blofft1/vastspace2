@@ -3,34 +3,34 @@
     "data": [
       {
         "name": "Hero",
-        "path": "/block-library/hero"
+        "path": "/docs/library/blocks/hero"
       },
       {
         "name": "Hero (Video)",
-        "path": "/block-library/hero",
+        "path": "/docs/library/blocks/hero",
         "variant": "video"
       },
       {
         "name": "Columns",
-        "path": "/block-library/columns"
+        "path": "/docs/library/blocks/columns"
       },
       {
         "name": "Columns (Press)",
-        "path": "/block-library/columns",
+        "path": "/docs/library/blocks/columns",
         "variant": "press"
       },
       {
         "name": "Cards",
-        "path": "/block-library/cards"
+        "path": "/docs/library/blocks/cards"
       },
       {
         "name": "Cards (Missions)",
-        "path": "/block-library/cards",
+        "path": "/docs/library/blocks/cards",
         "variant": "missions"
       },
       {
         "name": "Carousel",
-        "path": "/block-library/carousel"
+        "path": "/docs/library/blocks/carousel"
       }
     ]
   }
