@@ -16,18 +16,7 @@
       {
         "name": "Carousel",
         "path": "/docs/library/blocks/carousel"
-      },
-      {
-        "name": "Buttons",
-        "path": "/docs/library/blocks/buttons"
-      },
-      {
-        "name": "Section Metadata",
-        "path": "/docs/library/blocks/section-metadata"
-      },
-      {
-        "name": "Table",
-        "path": "/docs/library/blocks/table"
+      
       }
     ]
   }
