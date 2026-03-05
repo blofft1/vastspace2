@@ -127,13 +127,25 @@ export function decorateMain(main) {
 }
 
 /**
+ * Returns the innermost main element (handles nested mains from local dev server).
+ * @param {Element} doc The document or container
+ * @returns {Element|null} The main element with content
+ */
+function getMain(doc) {
+  let main = doc.querySelector('main');
+  const inner = main && main.querySelector(':scope > main');
+  if (inner) main = inner;
+  return main;
+}
+
+/**
  * Loads everything needed to get to LCP.
  * @param {Element} doc The container element
  */
 async function loadEager(doc) {
   document.documentElement.lang = 'en';
   decorateTemplateAndTheme();
-  const main = doc.querySelector('main');
+  const main = getMain(doc);
   if (main) {
     decorateMain(main);
     document.body.classList.add('appear');
@@ -157,7 +169,7 @@ async function loadEager(doc) {
 async function loadLazy(doc) {
   loadHeader(doc.querySelector('header'));
 
-  const main = doc.querySelector('main');
+  const main = getMain(doc);
   await loadSections(main);
 
   const { hash } = window.location;
