@@ -209,22 +209,143 @@
   }
 }
 
+/* ─── Press variant ─── */
+
+/* Press carousel: text-only quote cards on light background */
+.carousel.press .carousel-slide {
+  background: #f0ece6;
+  border-radius: 0;
+  display: flex;
+  flex-direction: column;
+  flex: 0 0 calc(100% - 32px);
+  min-height: 280px;
+}
+
+/* Logo image – small, top-left of card */
+.carousel.press .carousel-slide-image {
+  padding: 32px 32px 0;
+}
+
+.carousel.press .carousel-slide-image img {
+  width: auto;
+  height: 20px;
+  aspect-ratio: auto;
+  object-fit: contain;
+  display: block;
+}
+
+/* Quote text – static below logo, not absolute overlay */
+.carousel.press .carousel-slide-overlay {
+  position: static;
+  background: none;
+  padding: 20px 32px 32px;
+  flex: 1;
+}
+
+.carousel.press .carousel-slide-overlay p {
+  color: var(--text-color, #2a2c2f);
+  font-family: var(--heading-font-family);
+  font-size: 1.125rem;
+  font-weight: 500;
+  line-height: 1.35;
+  text-transform: none;
+  letter-spacing: normal;
+  opacity: 1;
+  max-width: none;
+  display: block;
+}
+
+/* Override carousel overlay p:first/nth-child rules */
+.carousel.press .carousel-slide-overlay p:first-child {
+  font-family: var(--heading-font-family);
+  font-size: 1.125rem;
+  font-weight: 500;
+  text-transform: none;
+  letter-spacing: normal;
+  color: var(--text-color, #2a2c2f);
+}
+
+.carousel.press .carousel-slide-overlay p:nth-child(2) {
+  font-family: var(--heading-font-family);
+  font-size: 1.125rem;
+  font-weight: 500;
+  text-transform: none;
+  letter-spacing: normal;
+  opacity: 1;
+  color: var(--text-color, #2a2c2f);
+}
+
+/* Navigation – inline with heading */
+.carousel.press .carousel-nav {
+  position: absolute;
+  top: -52px;
+  right: 0;
+  margin-top: 0;
+  flex-direction: row;
+  gap: 8px;
+}
+
+.carousel.press .carousel-progress {
+  display: none;
+}
+
+.carousel.press .carousel-btn {
+  width: 40px;
+  height: 40px;
+  border-radius: 0;
+  border: 1px solid rgb(0 0 0 / 20%);
+  background: #e8e4de;
+}
+
+.carousel.press .carousel-btn:hover {
+  background: #ddd9d2;
+}
+
+@media (width >= 600px) {
+  .carousel.press .carousel-slide {
+    flex: 0 0 calc(50% - 16px);
+  }
+
+  .carousel.press .carousel-slide-overlay p,
+  .carousel.press .carousel-slide-overlay p:first-child,
+  .carousel.press .carousel-slide-overlay p:nth-child(2) {
+    font-size: 1.25rem;
+  }
+}
+
+@media (width >= 900px) {
+  .carousel.press .carousel-slide {
+    flex: 0 0 calc(33.333% - 12px);
+    min-height: 320px;
+  }
+
+  .carousel.press .carousel-slide-image img {
+    height: 24px;
+  }
+
+  .carousel.press .carousel-slide-overlay p,
+  .carousel.press .carousel-slide-overlay p:first-child,
+  .carousel.press .carousel-slide-overlay p:nth-child(2) {
+    font-size: 1.375rem;
+  }
+}
+
 /* Dark section variant */
 .section.dark .carousel-progress-bar {
   background: var(--white, #fff);
 }
 
-.section.dark .carousel-btn {
+.section.dark .carousel .carousel-btn {
   border-color: rgb(255 255 255 / 25%);
   color: var(--white, #fff);
 }
 
-.section.dark .carousel-btn:hover {
+.section.dark .carousel .carousel-btn:hover {
   background: rgb(255 255 255 / 10%);
   border-color: rgb(255 255 255 / 50%);
 }
 
-.section.dark .carousel-btn:disabled:hover {
+.section.dark .carousel .carousel-btn:disabled:hover {
   background: transparent;
   border-color: rgb(255 255 255 / 25%);
 }
