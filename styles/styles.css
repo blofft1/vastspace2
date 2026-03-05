@@ -339,6 +339,41 @@ main > .section:first-of-type {
   }
 }
 
+/* section metadata — light/highlight variant (warm gray) */
+main .section.light,
+main .section.highlight {
+  background-color: var(--light-color);
+  margin: 0;
+  padding: var(--section-spacing) 0;
+}
+
+/* section metadata — warm variant (taupe background, white text) */
+main .section.warm {
+  background-color: #b3aba3;
+  color: var(--white);
+  margin: 0;
+  padding: var(--section-spacing) 0;
+}
+
+main .section.warm h1,
+main .section.warm h2,
+main .section.warm h3,
+main .section.warm h4,
+main .section.warm h5,
+main .section.warm h6 {
+  color: var(--text-color-secondary);
+}
+
+main .section.warm p {
+  color: var(--white);
+}
+
+main .section.warm a.button.primary {
+  border-color: rgb(255 255 255 / 40%);
+  background-color: rgb(255 255 255 / 10%);
+  color: var(--white);
+}
+
 /* section metadata — dark variant */
 main .section.dark {
   background-color: var(--dark-color);
@@ -370,6 +405,12 @@ main .section.dark a.button.primary {
   color: var(--dark-color);
 }
 
+main .section.warm a.button.primary:hover,
+main .section.warm a.button.primary:focus-visible {
+  background-color: rgb(255 255 255 / 20%);
+  border-color: rgb(255 255 255 / 70%);
+}
+
 main .section.dark a.button.primary:hover,
 main .section.dark a.button.primary:focus-visible {
   background-color: var(--white);
@@ -384,14 +425,6 @@ main .section.dark a.button.secondary {
 main .section.dark a.button.secondary:hover,
 main .section.dark a.button.secondary:focus-visible {
   background-color: rgb(255 255 255 / 10%);
-}
-
-/* section metadata — light/highlight variant (warm gray) */
-main .section.light,
-main .section.highlight {
-  background-color: var(--light-color);
-  margin: 0;
-  padding: var(--section-spacing) 0;
 }
 
 /* section metadata — cream variant */
