@@ -18,10 +18,15 @@
 
 .columns > div > .columns-img-col {
   order: 0;
+  perspective: 1200px;
+  overflow: visible;
 }
 
 .columns > div > .columns-img-col img {
   display: block;
+  will-change: transform;
+  transform-style: preserve-3d;
+  transition: transform 0.1s linear;
 }
 
 /* First row: label + image + description */
