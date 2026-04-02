@@ -10,7 +10,36 @@ import {
   loadSection,
   loadSections,
   loadCSS,
+  loadScript,
+  getMetadata,
+  sampleRUM,
+  toCamelCase,
+  toClassName,
 } from './aem.js';
+
+/**
+ * Audience definitions for experimentation.
+ */
+const AUDIENCES = {
+  mobile: () => window.innerWidth < 600,
+  desktop: () => window.innerWidth >= 600,
+};
+
+/**
+ * Returns all metadata properties that match the given prefix.
+ * @param {string} prefix The meta tag prefix
+ * @returns {object} An object with the matching metadata key/value pairs
+ */
+function getAllMetadata(prefix) {
+  return [...document.head.querySelectorAll(`meta[name^="${prefix}-"],meta[property^="${prefix}:"]`)]
+    .reduce((res, meta) => {
+      const key = meta.name
+        ? meta.name.substring(prefix.length + 1)
+        : meta.getAttribute('property').substring(prefix.length + 1);
+      res[key] = meta.content;
+      return res;
+    }, {});
+}
 
 /**
  * Builds hero block and prepends to main in a new section.
@@ -145,6 +174,27 @@ function getMain(doc) {
 async function loadEager(doc) {
   document.documentElement.lang = 'en';
   decorateTemplateAndTheme();
+
+  // Experimentation plugin: eager phase
+  const experimentationMetadata = getMetadata('experiment')
+    || Object.keys(getAllMetadata('campaign')).length
+    || Object.keys(getAllMetadata('audience')).length;
+  if (experimentationMetadata) {
+    // eslint-disable-next-line import/no-unresolved, import/no-relative-packages
+    const { loadEager: runEager } = await import('../plugins/experimentation/src/index.js');
+    await runEager(document, {
+      audiences: AUDIENCES,
+    }, {
+      getAllMetadata,
+      getMetadata,
+      loadCSS,
+      loadScript,
+      sampleRUM,
+      toCamelCase,
+      toClassName,
+    });
+  }
+
   const main = getMain(doc);
   if (main) {
     decorateMain(main);
@@ -180,6 +230,25 @@ async function loadLazy(doc) {
 
   loadCSS(`${window.hlx.codeBasePath}/styles/lazy-styles.css`);
   loadFonts();
+
+  // Experimentation plugin: lazy phase
+  if (getMetadata('experiment')
+    || Object.keys(getAllMetadata('campaign')).length
+    || Object.keys(getAllMetadata('audience')).length) {
+    // eslint-disable-next-line import/no-unresolved, import/no-relative-packages
+    const { loadLazy: runLazy } = await import('../plugins/experimentation/src/index.js');
+    await runLazy(document, {
+      audiences: AUDIENCES,
+    }, {
+      getAllMetadata,
+      getMetadata,
+      loadCSS,
+      loadScript,
+      sampleRUM,
+      toCamelCase,
+      toClassName,
+    });
+  }
 }
 
 /**
