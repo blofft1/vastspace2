@@ -199,27 +199,35 @@ async function loadEager(doc) {
   document.documentElement.lang = 'en';
   decorateTemplateAndTheme();
 
+  // Process page-metadata before experimentation so meta tags are available
+  const main = getMain(doc);
+  if (main) decoratePageMetadata(main);
+
   // Experimentation plugin: eager phase
   const experimentationMetadata = getMetadata('experiment')
     || Object.keys(getAllMetadata('campaign')).length
     || Object.keys(getAllMetadata('audience')).length;
   if (experimentationMetadata) {
-    // eslint-disable-next-line import/no-unresolved, import/no-relative-packages
-    const { loadEager: runEager } = await import('../plugins/experimentation/src/index.js');
-    await runEager(document, {
-      audiences: AUDIENCES,
-    }, {
-      getAllMetadata,
-      getMetadata,
-      loadCSS,
-      loadScript,
-      sampleRUM,
-      toCamelCase,
-      toClassName,
-    });
+    try {
+      // eslint-disable-next-line import/no-unresolved, import/no-relative-packages
+      const { loadEager: runEager } = await import('../plugins/experimentation/src/index.js');
+      await runEager(document, {
+        audiences: AUDIENCES,
+      }, {
+        getAllMetadata,
+        getMetadata,
+        loadCSS,
+        loadScript,
+        sampleRUM,
+        toCamelCase,
+        toClassName,
+      });
+    } catch (e) {
+      // eslint-disable-next-line no-console
+      console.error('Experimentation plugin failed', e);
+    }
   }
 
-  const main = getMain(doc);
   if (main) {
     decorateMain(main);
     document.body.classList.add('appear');
