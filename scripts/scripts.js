@@ -143,11 +143,35 @@ function decorateButtons(main) {
 }
 
 /**
+ * Processes a page-metadata block, converting its entries into <meta> tags
+ * in the document head and removing the block from the DOM.
+ * @param {Element} main The main element
+ */
+function decoratePageMetadata(main) {
+  const block = main.querySelector('.page-metadata');
+  if (!block) return;
+  [...block.children].forEach((row) => {
+    const [keyEl, valueEl] = [...row.children];
+    if (!keyEl || !valueEl) return;
+    const name = keyEl.textContent.trim().toLowerCase();
+    const content = valueEl.textContent.trim();
+    if (name && content) {
+      const meta = document.createElement('meta');
+      meta.name = name;
+      meta.content = content;
+      document.head.appendChild(meta);
+    }
+  });
+  block.closest('.section')?.remove();
+}
+
+/**
  * Decorates the main element.
  * @param {Element} main The main element
  */
 // eslint-disable-next-line import/prefer-default-export
 export function decorateMain(main) {
+  decoratePageMetadata(main);
   decorateIcons(main);
   buildAutoBlocks(main);
   decorateSections(main);
