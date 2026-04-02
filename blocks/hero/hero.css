@@ -150,6 +150,28 @@ main > .section.hero-container {
   text-decoration: none;
 }
 
+/* Experimentation: challenger-1 (red button) */
+.variant-challenger-1 .hero a.button:any-link {
+  background: rgb(220 38 38 / 10%);
+  border-color: rgb(220 38 38 / 40%);
+}
+
+.variant-challenger-1 .hero a.button:hover {
+  background: rgb(220 38 38 / 20%);
+  border-color: rgb(220 38 38 / 70%);
+}
+
+/* Experimentation: challenger-2 (green button) */
+.variant-challenger-2 .hero a.button:any-link {
+  background: rgb(22 163 74 / 10%);
+  border-color: rgb(22 163 74 / 40%);
+}
+
+.variant-challenger-2 .hero a.button:hover {
+  background: rgb(22 163 74 / 20%);
+  border-color: rgb(22 163 74 / 70%);
+}
+
 /* Hero without text overlay (media only) */
 .hero:not(:has(.hero-overlay)) {
   min-height: 60vh;
